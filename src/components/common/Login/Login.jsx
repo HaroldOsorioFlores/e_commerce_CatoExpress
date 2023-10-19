@@ -11,11 +11,11 @@ const Login = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50"
+          className="fixed inset-x-0 top-0 h-screen flex items-center justify-center z-50"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-white w-4/6 h-4/5 flex items-center rounded-lg"
+            className="bg-white flex w-4/6 h-4/5 items-center rounded-lg"
             onClick={(e) => e.stopPropagation()}
           >
             {
