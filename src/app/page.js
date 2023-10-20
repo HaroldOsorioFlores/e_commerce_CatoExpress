@@ -20,7 +20,7 @@ export default function Home() {
           Reserva tu menú ahora
         </Button>
       </div>
-      <div className="flex w-4/5 h-auto mx-auto space-x-2">
+      <div className="flex w-4/5 h-auto mx-auto space-x-2 mb-10">
         <Product />
         <Product />
         <Product />
