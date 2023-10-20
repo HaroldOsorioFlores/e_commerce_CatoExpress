@@ -1,15 +1,19 @@
 "use client";
 
 import Product from "@/components/common/Product/Product";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide} from "swiper/react";
+import {Pagination} from 'swiper/modules';
+import SwiperCore from 'swiper/core';
 import "swiper/css";
+
+SwiperCore.use([Pagination]);
 
 const ProductView = ({ products = [] }) => {
   return (
     <div className="justify-center w-4/5 h-auto mx-auto mb-10">
       <div className="swiper-container">
         <Swiper
-          fadeEffect={false}
+          fadeEffect={true}
           spaceBetween={50}
           slidesPerView={1}
           breakpoints={{
@@ -22,8 +26,7 @@ const ProductView = ({ products = [] }) => {
               slidesPerView: 4,
             },
           }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          pagination={{ clickable: true, bulletActiveClass:	'swiper-pagination-bullet-active', bulletClass: 'swiper-pagination-bullet', bulletElement: 'span', type: 'bullets' }}
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>

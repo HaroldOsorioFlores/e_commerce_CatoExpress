@@ -4,15 +4,15 @@ import "swiper/css";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex-col items-center">
       <div
-        className="h-3/5 w-full mb-12 pl-32 py-24 bg-cover bg-center"
+        className="h-3/5 w-full mb-12 pl-5 sm:pl-10 md:pl-32 py-12 md:py-24 bg-cover bg-center"
         style={{ backgroundImage: `url('/images/FondoHome.png')` }}
       >
-        <p className="text-white font-bold text-6xl drop-shadow-xl mb-3">
+        <p className="text-white font-bold text-4xl sm:text-6xl drop-shadow-xl mb-3">
           ¿No te gusta lo que comes?
         </p>
-        <p className="text-gray-700">
+        <p className="text-gray-700 text-tiny sm:text-base">
           Te damos opciones desde Arroz con huevo hasta Lomo Saltado
         </p>
         <Button
