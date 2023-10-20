@@ -1,32 +1,161 @@
-import Button from "@/components/common/Button/Button";
-import Link from "next/link";
-import Logo from "@/components/common/Logo/Logo";
-import Search from "@/components/common/Search/Search";
-import LoginButton from "@/components/common/Login/LoginButton";
+"use client";
+import {
+  Navbar as NextUiNavbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Input,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  Avatar,
+  Image,
+  Button,
+} from "@nextui-org/react";
 
-const data = [
-  { name: "Servicios", label: "/" },
-  { name: "Nosotros", label: "/About" },
-  { name: "Contactenos", label: "/" },
+const dataIcon = {
+  icon: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-4 h-4"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  ),
+  iconSearch: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+      />
+    </svg>
+  ),
+};
+const dataPages = [
+  { label: "Nosotros", url: "/" },
+  { label: "Contactanos", url: "/" },
+];
+
+const dataProfileActions = [{ label: "Configuracion", url: "/" }];
+const dataShop = [
+  { label: "Ceprobis", url: "/" },
+  { label: "Panificadora", url: "/" },
+  { label: "Como en Casa", url: "/" },
+  { label: "El Cholo", url: "/" },
 ];
 const Navbar = () => {
   return (
-    <div className="bg-lime-600 sticky top-0 flex justify-center gap-3 px-32 h-12 drop-shadow-2xl">
-      <div className="flex items-center justify-between h-full w-full space-x-4 text-white">
-        <Link href="/">
-          <Logo />
-        </Link>
-        {data.map((item, index) => (
-          <Link className="" href={item.label} key={index}>
-            {item.name}
-          </Link>
+    <NextUiNavbar isBordered className="bg-lime-500">
+      <NavbarBrand className="mr-4">
+        <Image
+          src="/images/logo_catoexpress.webp"
+          alt="Logo Catoexpress"
+          height={36}
+          width={130}
+        />
+      </NavbarBrand>
+      <NavbarContent className="hidden sm:flex gap-3">
+        <Dropdown>
+          <NavbarItem>
+            <DropdownTrigger>
+              <Button
+                disableRipple
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent text-black font-normal"
+                radius="sm"
+                variant="light"
+                endContent={dataIcon.icon}
+              >
+                Servicios
+              </Button>
+            </DropdownTrigger>
+          </NavbarItem>
+          <DropdownMenu
+            aria-label="CatoExpress servicios"
+            itemClasses={{
+              base: "gap-8",
+            }}
+          >
+            {dataShop.map((item, index) => (
+              <DropdownItem key={index}>
+                <Link className="text-sm text-black font-normal">
+                  {item.label}
+                </Link>
+              </DropdownItem>
+            ))}
+          </DropdownMenu>
+        </Dropdown>
+        {dataPages.map((item, index) => (
+          <NavbarItem isActive key={index}>
+            <Link
+              href={item.url}
+              aria-current="page"
+              className="text-sm text-black font-normal"
+            >
+              {item.label}
+            </Link>
+          </NavbarItem>
         ))}
-        <div className="flex space-x-2">
-          <Search />
-          <LoginButton />
-        </div>
-      </div>
-    </div>
+      </NavbarContent>
+
+      <NavbarContent as="div" className="items-center" justify="end">
+        <Input
+          classNames={{
+            base: "max-w-full sm:max-w-[10rem] h-10",
+            mainWrapper: "h-full",
+            input: "text-small",
+            inputWrapper:
+              "h-full font-normal text-default-500 bg-default-100/40 dark:bg-default-500/20",
+          }}
+          placeholder="Type to search..."
+          size="sm"
+          type="search"
+          startContent={dataIcon.iconSearch}
+        />
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              color="secondary"
+              name="Jason Hughes"
+              size="sm"
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem textValue="viewSession" className="h-14 gap-2">
+              <p className="font-semibold">Sesion</p>
+              <p className="font-semibold">zoey@example.com</p>
+            </DropdownItem>
+            {dataProfileActions.map((item, index) => (
+              <DropdownItem key={index}>{item.label}</DropdownItem>
+            ))}
+            <DropdownItem key="logout" color="danger">
+              Salir
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </NavbarContent>
+    </NextUiNavbar>
   );
 };
 
