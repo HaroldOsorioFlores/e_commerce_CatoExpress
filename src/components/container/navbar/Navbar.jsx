@@ -1,11 +1,11 @@
 "use client";
+
 import { useState } from "react";
 import {
   Navbar as NextUiNavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Input,
   DropdownItem,
   DropdownTrigger,
@@ -17,7 +17,9 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  Divider,
 } from "@nextui-org/react";
+import Link from "next/link";
 
 const dataIcon = {
   icon: (
@@ -54,29 +56,16 @@ const dataIcon = {
   ),
 };
 const dataPages = [
-  { label: "Nosotros", url: "/" },
-  { label: "Contactanos", url: "/" },
+  { label: "Nosotros", url: "/About" },
+  { label: "Contactanos", url: "/ContactUs" },
 ];
 
 const dataProfileActions = [{ label: "Configuracion", url: "/" }];
 const dataShop = [
-  { label: "Ceprobis", url: "/" },
-  { label: "Panificadora", url: "/" },
-  { label: "Como en Casa", url: "/" },
-  { label: "El Cholo", url: "/" },
-];
-
-const menuItems = [
-  "Profile",
-  "Dashboard",
-  "Activity",
-  "Analytics",
-  "System",
-  "Deployments",
-  "My Settings",
-  "Team Settings",
-  "Help & Feedback",
-  "Log Out",
+  { label: "Ceprobis", url: "/Ceprobis" },
+  { label: "Panificadora Ucsm", url: "/PanificadoraUcsm" },
+  { label: "Como en Casa", url: "/ComoEnCasa" },
+  { label: "El Cholo", url: "/ElCholo" },
 ];
 
 const Navbar = () => {
@@ -87,6 +76,7 @@ const Navbar = () => {
       isBordered
       className="bg-lime-500"
       onMenuOpenChange={setIsMenuOpen}
+      maxWidth="xl"
     >
       <NavbarContent>
         <NavbarMenuToggle
@@ -121,14 +111,13 @@ const Navbar = () => {
           </NavbarItem>
           <DropdownMenu
             aria-label="CatoExpress servicios"
-            itemClasses={{
-              base: "gap-8",
-            }}
+
           >
             {dataShop.map((item, index) => (
               <DropdownItem key={index} textValue="viewShops">
-                <Link className="text-sm text-black font-normal">
+                <Link className="text-sm text-black font-normal" href={item.url}>
                   {item.label}
+                  {console.log(item.label, item.url)}
                 </Link>
               </DropdownItem>
             ))}
@@ -198,21 +187,28 @@ const Navbar = () => {
         </Dropdown>*/}
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+        {dataShop.map((item, index) => (
+          <NavbarMenuItem key={index}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
+              color="foreground"
               className="w-full"
-              href="#"
+              href={item.url}
               size="lg"
             >
-              {item}
+              {item.label}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+        <Divider />
+        {dataPages.map((item, index) => (
+          <NavbarMenuItem key={index}>
+            <Link
+              color="foreground"
+              className="w-full"
+              href={item.url}
+              size="lg"
+            >
+              {item.label}
             </Link>
           </NavbarMenuItem>
         ))}
