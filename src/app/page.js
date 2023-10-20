@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react";
 export default function Home() {
   return (
     <main className="flex flex-col items-center">
-      <div className="bg-gray-300 h-3/5 w-screen mb-12 pl-32 py-24">
+      <div className="bg-gray-300 h-3/5 w-full mb-12 pl-32 py-24">
         <p className="text-white font-bold text-6xl drop-shadow-xl mb-3">
           ¿No te gusta lo que comes?
         </p>
@@ -26,7 +26,6 @@ export default function Home() {
         <Product />
         <Product />
       </div>
-      <h1>CatoExpress</h1>
     </main>
   );
 }
