@@ -1,4 +1,5 @@
 import Navbar from "@/components/container/navbar/Navbar";
+import Footer from "@/components/container/footer/Footer";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./Providers";
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
             <Navbar />
           </header>
           {children}
-          <footer>Footer</footer>
+          <Footer />
         </Providers>
       </body>
     </html>
