@@ -16,8 +16,8 @@ const Navbar = () => {
         <Link href="/">
           <Logo />
         </Link>
-        {data.map((item) => (
-          <Link className="" href={item.label}>
+        {data.map((item, index) => (
+          <Link className="" href={item.label} key={index}>
             {item.name}
           </Link>
         ))}
