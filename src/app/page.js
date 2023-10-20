@@ -1,6 +1,31 @@
+import Product from "@/components/common/Product/Product";
+import { Button } from "@nextui-org/react";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center">
+      <div className="bg-gray-300 h-3/5 w-screen mb-12 pl-32 py-24">
+        <p className="text-white font-bold text-6xl drop-shadow-xl mb-3">
+          ¿No te gusta lo que comes?
+        </p>
+        <p className="text-gray-700">
+          Te damos opciones desde Arroz con huevo hasta Lomo Saltado
+        </p>
+        <Button
+          className="bg-gradient-to-r from-green-800 to-lime-600 text-white px-10 font-bold py-6 text-sm mt-16"
+          radius="sm"
+          color="gradient"
+          variant="shadow"
+        >
+          Reserva tu menú ahora
+        </Button>
+      </div>
+      <div className="flex w-4/5 h-auto mx-auto space-x-2">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
+      </div>
       <h1>CatoExpress</h1>
     </main>
   );
