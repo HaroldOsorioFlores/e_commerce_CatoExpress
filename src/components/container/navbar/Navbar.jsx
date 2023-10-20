@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
   Navbar as NextUiNavbar,
   NavbarBrand,
@@ -13,6 +14,9 @@ import {
   Avatar,
   Image,
   Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
 } from "@nextui-org/react";
 
 const dataIcon = {
@@ -61,18 +65,46 @@ const dataShop = [
   { label: "Como en Casa", url: "/" },
   { label: "El Cholo", url: "/" },
 ];
+
+const menuItems = [
+  "Profile",
+  "Dashboard",
+  "Activity",
+  "Analytics",
+  "System",
+  "Deployments",
+  "My Settings",
+  "Team Settings",
+  "Help & Feedback",
+  "Log Out",
+];
+
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <NextUiNavbar isBordered className="bg-lime-500">
-      <NavbarBrand className="mr-4">
-        <Image
-          src="/images/logo_catoexpress.webp"
-          alt="Logo Catoexpress"
-          height={36}
-          width={130}
+    <NextUiNavbar
+      isBordered
+      className="bg-lime-500"
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
         />
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-3">
+        <NavbarBrand>
+          <Link href="/">
+            <Image
+              src="/images/logo_catoexpress.webp"
+              alt="Logo Catoexpress"
+              height={36}
+              width={130}
+            />
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-5">
         <Dropdown>
           <NavbarItem>
             <DropdownTrigger>
@@ -94,7 +126,7 @@ const Navbar = () => {
             }}
           >
             {dataShop.map((item, index) => (
-              <DropdownItem key={index}>
+              <DropdownItem key={index} textValue="viewShops">
                 <Link className="text-sm text-black font-normal">
                   {item.label}
                 </Link>
@@ -129,7 +161,17 @@ const Navbar = () => {
           type="search"
           startContent={dataIcon.iconSearch}
         />
-        <Dropdown placement="bottom-end">
+        <NavbarItem>
+          <Button
+            as={Link}
+            href="/Login"
+            variant="solid"
+            className="bg-green-900 text-white"
+          >
+            Ingresar
+          </Button>
+        </NavbarItem>
+        {/* <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               isBordered
@@ -153,8 +195,28 @@ const Navbar = () => {
               Salir
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>
+        </Dropdown>*/}
       </NavbarContent>
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              color={
+                index === 2
+                  ? "primary"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
+              }
+              className="w-full"
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </NextUiNavbar>
   );
 };
