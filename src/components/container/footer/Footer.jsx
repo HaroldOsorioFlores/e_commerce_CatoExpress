@@ -1,7 +1,5 @@
-"use client";
-
 import React from "react";
-import { Button, Input } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 const Footer = () => {
   return (
@@ -51,7 +49,7 @@ const Footer = () => {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
                 <svg
-                  class="h-4 w-4 text-gray-500"
+                  className="h-4 w-4 text-gray-500"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -63,7 +61,7 @@ const Footer = () => {
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
                 <svg
-                  class="h-4 w-4 text-gray-500"
+                  className="h-4 w-4 text-gray-500"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
