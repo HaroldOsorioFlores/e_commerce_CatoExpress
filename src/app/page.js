@@ -1,8 +1,18 @@
 import ProductView from "@/components/common/ProductView/ProductView";
+import {
+  getDataCeprobis,
+  getDataCholo,
+  getDataComoEnCasa,
+  getDataPanificadora,
+} from "@/utils/fetchData";
 import { Button } from "@nextui-org/react";
 import "swiper/css";
 
-export default function Home() {
+export default async function Home() {
+  const dataCholo = await getDataCholo(4);
+  const dataCeprobis = await getDataCeprobis(4);
+  const dataPanificadora = await getDataPanificadora(4);
+  const dataComoEnCasa = await getDataComoEnCasa(4);
   return (
     <main className="flex-col items-center">
       <div
@@ -24,7 +34,22 @@ export default function Home() {
           Reserva tu menú ahora
         </Button>
       </div>
-      <ProductView products={["", "", "", ""]}/>
+      <section className="justify-center w-4/5 mx-auto mb-10">
+        <h2 className="text-2xl">Productos del dia del Cholo</h2>
+        <ProductView products={dataCholo} lugar="El Cholo" />
+      </section>
+      <section className="justify-center w-4/5 mx-auto mb-10">
+        <h2 className="text-2xl">Productos del dia de Ceprobis</h2>
+        <ProductView products={dataCeprobis} lugar="El Cholo" />
+      </section>
+      <section className="justify-center w-4/5 mx-auto mb-10">
+        <h2 className="text-2xl">Productos del dia de la Panificadora UCSM</h2>
+        <ProductView products={dataPanificadora} lugar="El Cholo" />
+      </section>
+      <section className="justify-center w-4/5 mx-auto mb-10">
+        <h2 className="text-2xl">Productos del dia de Como en Casa</h2>
+        <ProductView products={dataComoEnCasa} lugar="El Cholo" />
+      </section>
     </main>
   );
 }

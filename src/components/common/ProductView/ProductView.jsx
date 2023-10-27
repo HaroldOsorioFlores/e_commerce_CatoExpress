@@ -1,20 +1,20 @@
 "use client";
 
 import Product from "@/components/common/Product/Product";
-import { Swiper, SwiperSlide} from "swiper/react";
-import {Pagination} from 'swiper/modules';
-import SwiperCore from 'swiper/core';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import SwiperCore from "swiper/core";
 import "swiper/css";
 
 SwiperCore.use([Pagination]);
 
-const ProductView = ({ products = [] }) => {
+const ProductView = ({ products, lugar }) => {
   return (
-    <div className="justify-center w-4/5 h-auto mx-auto mb-10">
+    <>
       <div className="swiper-container">
         <Swiper
           fadeEffect={true}
-          spaceBetween={50}
+          spaceBetween={20}
           slidesPerView={1}
           breakpoints={{
             // when window width is >= 640px
@@ -26,21 +26,29 @@ const ProductView = ({ products = [] }) => {
               slidesPerView: 4,
             },
           }}
-          pagination={{ clickable: true, bulletActiveClass:	'swiper-pagination-bullet-active', bulletClass: 'swiper-pagination-bullet', bulletElement: 'span', type: 'bullets' }}
+          pagination={{
+            clickable: true,
+            bulletActiveClass: "swiper-pagination-bullet-active",
+            bulletClass: "swiper-pagination-bullet",
+            bulletElement: "span",
+            type: "bullets",
+          }}
+          className="max-w-7xl min-w-72"
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
               <Product
-                imagen={product.imagen}
-                nombre={product.nombre}
-                lugar={product.lugar}
-                dinero={product.dinero}
+                nombre={product.title}
+                imagen={product.urlImage}
+                lugar={lugar}
+                dinero={product.price}
+                id={product._id}
               />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-    </div>
+    </>
   );
 };
 
