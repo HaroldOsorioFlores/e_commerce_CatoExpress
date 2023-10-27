@@ -42,6 +42,7 @@ const ProductView = ({ products, lugar }) => {
                 imagen={product.urlImage}
                 lugar={lugar}
                 dinero={product.price}
+                id={product._id}
               />
             </SwiperSlide>
           ))}

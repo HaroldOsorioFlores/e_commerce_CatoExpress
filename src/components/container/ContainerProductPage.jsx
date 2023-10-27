@@ -12,6 +12,7 @@ const ContainerProductPage = ({ fetchData }) => {
             imagen={item.urlImage}
             lugar="El Cholo"
             dinero={item.price}
+            id={item._id}
           />
         ))}
       </div>

@@ -1,7 +1,13 @@
+"use client";
 import React from "react";
+import { useCartStore } from "@/store/cartStore";
 import { Card, CardHeader, CardBody, Image, Button } from "@nextui-org/react";
 
-const Product = ({ imagen, nombre, lugar, dinero }) => {
+const Product = ({ imagen, nombre, lugar, dinero, id }) => {
+  const { addProduct } = useCartStore();
+  const handleAdd = () => {
+    addProduct(imagen, nombre, lugar, dinero, id )
+  }
   return (
     <Card className="py-4 flex gap-5 flex-col ">
       <CardHeader className="pb-0 pt-2 px-4 flex justify-center">
@@ -35,6 +41,7 @@ const Product = ({ imagen, nombre, lugar, dinero }) => {
           color="default"
           radius="sm"
           size="md"
+          onClick={handleAdd}
         >
           Ordenar ahora
         </Button>
