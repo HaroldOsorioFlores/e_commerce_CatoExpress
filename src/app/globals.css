@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
+
+
+.cl-logoImage {
+  height: 8rem;
+}
+
+.cl-logoBox {
+  justify-content: center;
+}
+
+.cl-formButtonPrimary {
+  background-color: #246d19;
+}
+
+.cl-internal-b3fm6y {
+  background-color: #246d19;
+  visibility: hidden;
+}

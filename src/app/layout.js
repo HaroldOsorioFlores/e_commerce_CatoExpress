@@ -3,6 +3,8 @@ import Footer from "@/components/container/footer/Footer";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./Providers";
+import { ClerkProvider, SignIn } from "@clerk/nextjs";
+import { esES } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,16 +15,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <header>
-            <Navbar />
-          </header>
-          {children}
-          <Footer />
-        </Providers>
-      </body>
-    </html>
+    <ClerkProvider localization={esES}>
+      <html lang="en">
+        <body className={inter.className}>
+          <Providers>
+            <header>
+              <Navbar />
+            </header>
+            {children}
+            <Footer />
+          </Providers>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

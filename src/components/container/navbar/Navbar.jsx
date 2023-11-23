@@ -22,6 +22,7 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 const dataIcon = {
   icon: (
@@ -84,6 +85,7 @@ const Navbar = () => {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartProducts } = useCartStore();
+  const user = useUser();
   console.log("Los productos son: ", cartProducts);
 
   return (
@@ -174,41 +176,20 @@ const Navbar = () => {
             {dataIcon.iconCart}({cartProducts.length})
           </Button>
         </NavbarItem>
-        <NavbarItem>
-          <Button
-            as={Link}
-            href="/Login"
-            variant="solid"
-            className="bg-green-900 text-white"
-          >
-            Ingresar
-          </Button>
-        </NavbarItem>
-        {/* <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Avatar
-              isBordered
-              as="button"
-              className="transition-transform"
-              color="secondary"
-              name="Jason Hughes"
-              size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-            />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem textValue="viewSession" className="h-14 gap-2">
-              <p className="font-semibold">Sesion</p>
-              <p className="font-semibold">zoey@example.com</p>
-            </DropdownItem>
-            {dataProfileActions.map((item, index) => (
-              <DropdownItem key={index}>{item.label}</DropdownItem>
-            ))}
-            <DropdownItem key="logout" color="danger">
-              Salir
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>*/}
+        {user.isSignedIn ? (
+          <UserButton afterSignOutUrl="/" />
+        ) : (
+          <NavbarItem>
+            <Button
+              as={Link}
+              href="/sign-in"
+              variant="solid"
+              className="bg-green-900 text-white"
+            >
+              Ingresar
+            </Button>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarMenu>
         {dataShop.map((item, index) => (
