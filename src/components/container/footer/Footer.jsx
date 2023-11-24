@@ -34,7 +34,7 @@ const Footer = () => {
               </p>
             ))}
           </div>
-          <div className="flex-col space-y-2 w-full sm:w-1/3">
+          <div className="flex flex-col items-center space-y-2 w-full sm:w-1/3">
             <p className="font-bold text-base mb-8 text-center">
               Libro de reclamaciones
             </p>
