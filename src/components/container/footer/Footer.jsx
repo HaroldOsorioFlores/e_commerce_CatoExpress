@@ -20,7 +20,7 @@ const Footer = () => {
               src="/images/logo_catoexpress_black.png"
             ></Image>
           </div>
-          <div className="flex-col space-y-2 w-full sm:w-1/3">
+          <div className="flex-col text-center sm:text-left space-y-2 w-full sm:w-1/3">
             <p className="font-bold text-base mb-8">Servicios</p>
             {dataShop.map((item, index) => (
               <p>
@@ -33,15 +33,15 @@ const Footer = () => {
               </p>
             ))}
           </div>
-          <div className="flex-col space-y-2 w-full sm:w-1/3">
-            <p className="font-bold text-base mb-8 text-center">
-              Libro de reclamaciones
-            </p>
-            <Image
-              className="rounded-none"
-              src="/images/libro_reclamaciones.png"
-            ></Image>
-          </div>
+          <div className="flex flex-col items-center space-y-2 w-full sm:w-1/3">
+  <p className="font-bold text-base mb-8 text-center">
+    Libro de reclamaciones
+  </p>
+  <Image
+    className="rounded-none"
+    src="/images/libro_reclamaciones.png"
+  ></Image>
+</div>
         </div>
         <div className="flex mt-10 md:mt-0 w-full md:w-1/2 justify-center md:justify-normal">
           <div className="w-0 md:w-1/3 h-full"></div>
@@ -96,13 +96,13 @@ const Footer = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-5 h-5 absolute left-3 top-2.5"
+                  className="w-4 h-4 absolute left-3 top-2.5"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                   />
                 </svg>
