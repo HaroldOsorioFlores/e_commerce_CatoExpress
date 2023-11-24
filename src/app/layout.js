@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={inter.className}>
           <Providers>
-            <header>
+            <header className="sticky top-0 z-50">
               <Navbar />
             </header>
             {children}

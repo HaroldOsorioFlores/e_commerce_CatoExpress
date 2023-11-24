@@ -91,7 +91,7 @@ const Navbar = () => {
   return (
     <NextUiNavbar
       isBordered
-      className="color-greenBG"
+      className="sticky top-0 color-greenBG"
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
     >
