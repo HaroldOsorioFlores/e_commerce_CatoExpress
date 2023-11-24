@@ -12,15 +12,7 @@ export const POST = async (request) => {
       quantity,
       priceTotal,
     } = await request.json();
-    console.log(
-      "datos recibidos: ",
-      idClient,
-      nameClient,
-      emailClient,
-      products,
-      quantity,
-      priceTotal
-    );
+
     const ordersMongo = await Orders.create({
       idClient,
       nameClient,
@@ -30,7 +22,6 @@ export const POST = async (request) => {
       priceTotal,
     });
     const saveOrders = ordersMongo.save();
-    console.log("enviado con exito!!")
     return Response.json({
       message: "Mensaje enviado con exito: ",
       saveOrders,

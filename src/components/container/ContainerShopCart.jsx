@@ -40,7 +40,9 @@ const ContainerShopCart = ({ userId, userName, userEmail }) => {
     e.preventDefault();
     try {
       await axios.post("/api/products/orders", data);
-      console.log("datos enviados con exito", data);
+      console.log("datos enviados con exito a mongoDB", data);
+      await axios.post("/api/sendEmail", data);
+      console.log("datos enviados con exito al api sendEmail", data);
     } catch (error) {
       console.error(error);
     }
