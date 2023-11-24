@@ -73,7 +73,6 @@ const dataPages = [
   { label: "Contactanos", url: "/ContactUs" },
 ];
 
-const dataProfileActions = [{ label: "Configuracion", url: "/" }];
 const dataShop = [
   { label: "Ceprobis", url: "/Ceprobis" },
   { label: "Panificadora Ucsm", url: "/PanificadoraUcsm" },
@@ -86,6 +85,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartProducts } = useCartStore();
   const user = useUser();
+  console.log("el usuario es del navbar: ", user);
   console.log("Los productos son: ", cartProducts);
 
   return (
@@ -171,7 +171,11 @@ const Navbar = () => {
           <Button
             className="p-0 bg-transparent data-[hover=true]:bg-transparent text-black font-normal flex gap-1"
             variant="light"
-            onClick={() => router.push("/ShopCart")}
+            onClick={() =>
+              router.push(
+                `/ShopCart?userName=${user.user.fullName}&userId=${user.user.id}&userEmail=${user.user.emailAddresses[0].emailAddress}`
+              )
+            }
           >
             {dataIcon.iconCart}({cartProducts.length})
           </Button>

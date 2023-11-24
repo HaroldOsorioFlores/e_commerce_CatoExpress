@@ -1,10 +1,50 @@
 const { Image, Link } = require("@nextui-org/react");
 import { useCartStore } from "@/store/cartStore";
-import { useState } from "react";
-const ContainerShopCart = ({ fetchData }) => {
+import axios from "axios";
+
+const ContainerShopCart = ({ userId, userName, userEmail }) => {
   const { cartProducts, totalPrice } = useCartStore();
   const uniqueProducts = [...new Set(cartProducts.map((p) => p.id))];
+  const products = uniqueProducts.map((id) => {
+    // Obtener producto por id
+    const product = cartProducts.find((p) => p.id === id);
 
+    // Obtener cantidad
+    const quantity = cartProducts.reduce((acc, cp) => {
+      if (cp.id === id) {
+        return acc + 1;
+      }
+      return acc;
+    }, 0);
+
+    // Calcular total
+    const totalPrice = product.price * quantity;
+
+    return {
+      title: product.name,
+      price: product.price,
+      quantity,
+      totalPrice,
+    };
+  });
+  console.log("los productos del carrito son: ", products);
+  const data = {
+    idClient: userId,
+    nameClient: userName,
+    emailClient: userEmail,
+    products: products,
+    quantity: cartProducts.length,
+    priceTotal: totalPrice,
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("/api/products/orders", data);
+      console.log("datos enviados con exito", data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="flex flex-col gap-10">
       <ul className="-my-6 divide-y divide-gray-200 ">
@@ -61,12 +101,13 @@ const ContainerShopCart = ({ fetchData }) => {
         </div>
 
         <div className="mt-6 flex justify-center">
-          <Link
+          <button
             href="#"
             className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 w-96"
+            onClick={handleSubmit}
           >
             Pagar
-          </Link>
+          </button>
         </div>
       </div>
     </div>
