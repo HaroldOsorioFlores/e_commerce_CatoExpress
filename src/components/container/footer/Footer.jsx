@@ -17,13 +17,14 @@ const Footer = () => {
           <div className="flex-col space-y-1.5 px-6 w-full sm:w-2/5">
             <Image
               className="rounded-none"
+              alt="logo_catoexpress_black"
               src="/images/logo_catoexpress_black.png"
             ></Image>
           </div>
           <div className="flex-col space-y-2 w-full sm:w-1/3">
             <p className="font-bold text-base mb-8">Servicios</p>
             {dataShop.map((item, index) => (
-              <p>
+              <p key={index}>
                 <Link
                   className="text-sm text-slate-50 font-normal"
                   href={item.url}
@@ -39,6 +40,7 @@ const Footer = () => {
             </p>
             <Image
               className="rounded-none"
+              alt="libro_reclamaciones"
               src="/images/libro_reclamaciones.png"
             ></Image>
           </div>
