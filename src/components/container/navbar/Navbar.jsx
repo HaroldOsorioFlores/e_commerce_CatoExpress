@@ -91,7 +91,7 @@ const Navbar = () => {
   return (
     <NextUiNavbar
       isBordered
-      className="bg-lime-500"
+      className="color-greenBG"
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
     >
@@ -103,7 +103,7 @@ const Navbar = () => {
         <NavbarBrand>
           <Link href="/">
             <Image
-              src="/images/logo_catoexpress.webp"
+              src="/images/logo_catoexpress_black.png"
               alt="Logo Catoexpress"
               height={36}
               width={130}
@@ -113,11 +113,11 @@ const Navbar = () => {
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-5">
         <Dropdown>
-          <NavbarItem>
+          <NavbarItem >
             <DropdownTrigger>
               <Button
                 disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent text-black font-normal"
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent text-white font-normal"
                 radius="sm"
                 variant="light"
                 endContent={dataIcon.icon}
@@ -146,7 +146,7 @@ const Navbar = () => {
             <Link
               href={item.url}
               aria-current="page"
-              className="text-sm text-black font-normal"
+              className="text-sm font-normal text-white"
             >
               {item.label}
             </Link>

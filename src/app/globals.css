@@ -2,7 +2,9 @@
 @tailwind utilities;
 @tailwind components;
 
-
+.color-greenBG {
+  background-color: #79b93c;
+}
 .cl-logoImage {
   height: 8rem;
 }

@@ -36,7 +36,7 @@ const Product = ({ imagen, nombre, lugar, dinero, id }) => {
         </small>
         <h4 className="font-bold text-large">S/. {dinero}</h4>
         <Button
-          className="text-tiny text-white bg-green-800 font-bold"
+          className="text-tiny text-white color-greenBG font-bold"
           variant="shadow"
           color="default"
           radius="sm"
