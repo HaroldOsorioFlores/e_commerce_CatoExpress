@@ -133,8 +133,9 @@ const Navbar = () => {
                   className="text-sm text-black font-normal"
                   href={item.url}
                 >
+                  <div className="w-full h-full">
                   {item.label}
-                  {console.log(item.label, item.url)}
+                  {console.log(item.label, item.url)}</div>
                 </Link>
               </DropdownItem>
             ))}
