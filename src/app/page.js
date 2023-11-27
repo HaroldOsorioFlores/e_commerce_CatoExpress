@@ -5,10 +5,16 @@ import {
   getDataComoEnCasa,
   getDataPanificadora,
 } from "@/utils/fetchData";
-import { Button } from "@nextui-org/react";
+import { Button, Image } from "@nextui-org/react";
 import "swiper/css";
 import { dataSVGHome } from "@/utils/svgData";
 
+const dataSectionShop = [
+  { name: "Panificadora UCSM", url: "/images/banner_panificadora.png" },
+  { name: "Ceprobis UCSM", url: "/images/banner_ceprobis.png" },
+  { name: "Como en Casa UCSM", url: "/images/banner_comoencasa.png" },
+  { name: "El Cholo UCSM", url: "/images/banner_elcholo.png" },
+];
 export default async function Home() {
   const dataCholo = await getDataCholo(4);
   const dataCeprobis = await getDataCeprobis(4);
@@ -35,10 +41,14 @@ export default async function Home() {
           Reserva tu menú ahora
         </Button>
       </div>
+
       <section className="w-full flex justify-center bg-green-50 px-14 py-10 ">
         <ul className="flex flex-wrap gap-4 justify-around w-full  max-w-screen-2xl">
           {dataSVGHome.map((item, index) => (
-            <li key={index} className="flex flex-col items-center gap-3 px-4 max-w-xs text-center">
+            <li
+              key={index}
+              className="flex flex-col items-center gap-3 px-4 max-w-xs text-center"
+            >
               <div>{item.svg}</div>
               <p>{item.title}</p>
               <p className="text-neutral-400 text-sm">{item.description}</p>
@@ -46,10 +56,25 @@ export default async function Home() {
           ))}
         </ul>
       </section>
-      <section></section>
-      <section className="justify-center w-4/5 mx-auto">
-        <h2 className="text-2xl">Productos del dia de Ceprobis</h2>
-        <ProductView products={dataCeprobis} lugar="El Cholo" />
+
+      <section className="bg-amber-500 w-full px-14 py-10 justify-center flex shadowSectionShop">
+        <ul className="flex gap-6 flex-wrap justify-center">
+          {dataSectionShop.map((item, index) => (
+            <li key={index} className="flex-col items-center flex gap-3">
+              <Image
+                src={item.url}
+                alt={item.name}
+                className="w-72 h-64 flex-shrink-0 object-cover   shadow-shadowComponent  "
+              />
+              <p className="text-white text-xl">{item.name}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="justify-center w-full mx-auto px-14 py-10 bg-green-50">
+        <div className="mx-auto ">
+          <ProductView products={dataCeprobis} lugar="El Cholo" />
+        </div>
       </section>
     </main>
   );
