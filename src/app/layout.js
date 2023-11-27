@@ -17,13 +17,15 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider localization={esES}>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={` ${inter.className}`}>
           <Providers>
             <header className="sticky top-0 z-50">
               <Navbar />
             </header>
             {children}
-            <Footer />
+            <footer className="mt-10">
+              <Footer />
+            </footer>
           </Providers>
         </body>
       </html>

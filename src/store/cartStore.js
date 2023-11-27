@@ -21,4 +21,10 @@ export const useCartStore = create((set) => ({
       };
     });
   },
+  cleanProducts: () => {
+    set({
+      cartProducts: [],
+      totalPrice: 0,
+    });
+  },
 }));
