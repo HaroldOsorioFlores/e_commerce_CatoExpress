@@ -27,4 +27,21 @@ export const useCartStore = create((set) => ({
       totalPrice: 0,
     });
   },
+  removeProduct: (id) => {
+    set((state) => {
+      const updatedCartProducts = state.cartProducts.filter(
+        (product) => product.id !== id
+      );
+
+      const removedProduct = state.cartProducts.find(
+        (product) => product.id === id
+      );
+
+      return {
+        cartProducts: updatedCartProducts,
+        totalPrice:
+          state.totalPrice - (removedProduct ? removedProduct.price : 0),
+      };
+    });
+  },
 }));

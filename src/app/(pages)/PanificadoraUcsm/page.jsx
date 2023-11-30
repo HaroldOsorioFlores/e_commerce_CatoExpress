@@ -6,11 +6,11 @@ const PanificadoraUcsm = async () => {
   const dataPanificadora = await getDataPanificadora();
 
   return (
-    <section className="flex flex-col items-center gap-8">
+    <section className="flex flex-col items-center gap-8 mb-10">
       <section className="">
         <Banner name={"PANIFICADORA"} img_src={"/images/banner_panificadora.png"}/>
       </section>
-      <ContainerProductPage fetchData={dataPanificadora} />
+      <ContainerProductPage fetchData={dataPanificadora} place="Panificadora UCSM"/>
     </section>
   );
 };

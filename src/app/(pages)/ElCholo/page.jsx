@@ -7,11 +7,11 @@ const ElCholo = async () => {
   const dataCholo = await getDataCholo();
 
   return (
-    <section className="flex flex-col items-center gap-8">
+    <section className="flex flex-col items-center gap-8 mb-10">
       <section className="">
         <Banner name={"EL CHOLO"} img_src={"/images/banner_elcholo.png"}/>
       </section>
-      <ContainerProductPage fetchData={dataCholo} />
+      <ContainerProductPage fetchData={dataCholo} place="El Cholo UCSM"/>
     </section>
   );
 };

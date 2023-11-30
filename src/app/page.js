@@ -16,30 +16,24 @@ const dataSectionShop = [
   { name: "El Cholo UCSM", url: "/images/banner_elcholo.png" },
 ];
 export default async function Home() {
-  const dataCholo = await getDataCholo(4);
   const dataCeprobis = await getDataCeprobis(4);
-  const dataPanificadora = await getDataPanificadora(4);
-  const dataComoEnCasa = await getDataComoEnCasa(4);
+
   return (
-    <main className="flex-col items-center">
-      <div
-        className="h-3/5 w-full pl-5 sm:pl-10 md:pl-32 py-12 md:py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url('/images/FondoHome.png')` }}
-      >
-        <p className="text-white font-bold text-4xl sm:text-6xl drop-shadow-xl mb-3">
-          ¿No te gusta lo que comes?
-        </p>
-        <p className="text-gray-700 text-tiny sm:text-base">
-          Te damos opciones desde Arroz con huevo hasta Lomo Saltado
-        </p>
-        <Button
-          className="bg-gradient-to-r from-green-800 to-lime-600 text-white px-10 font-bold py-6 text-sm mt-16"
-          radius="sm"
-          color="gradient"
-          variant="shadow"
-        >
-          Reserva tu menú ahora
-        </Button>
+    <main className="flex-col items-center ">
+      <div className="relative ">
+        <Image
+          className="rounded-none w-screen h-auto xl:h-unit-9xl shadowImageHome"
+          src="/images/FondoHome.png"
+          alt="Fondo Home Catoexpress"
+        />
+        <div className="absolute inset-0 flex items-center ml-5  md:bottom-24 lg:bottom-24 ">
+          <div className="text-white font-semibold sm:text-xl md:text-4xl lg:text-6xl z-10 flex flex-col gap-2 text-xl">
+            <p className="flex">
+              <span className="bg-amber-500 p-2">BIENVENIDO</span>
+            </p>
+            <p>A NUESTRO MUNDO VIRTUAL</p>
+          </div>
+        </div>
       </div>
 
       <section className="w-full flex justify-center bg-green-50 px-14 py-10 ">
@@ -73,7 +67,7 @@ export default async function Home() {
       </section>
       <section className="justify-center w-full mx-auto px-14 py-10 bg-green-50">
         <div className="mx-auto ">
-          <ProductView products={dataCeprobis} lugar="El Cholo" />
+          <ProductView products={dataCeprobis} lugar="Ceprobis UCSM" />
         </div>
       </section>
     </main>

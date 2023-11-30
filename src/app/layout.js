@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
               <Navbar />
             </header>
             {children}
-            <footer className="mt-10">
+            <footer>
               <Footer />
             </footer>
           </Providers>

@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 const ContainerShopCart = ({ userId, userName, userEmail }) => {
   const [LoadSpinner, setLoadSpinner] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const { cartProducts, totalPrice, cleanProducts } = useCartStore();
+  const { cartProducts, totalPrice, cleanProducts, removeProduct } =
+    useCartStore();
   const uniqueProducts = [...new Set(cartProducts.map((p) => p.id))];
   const products = uniqueProducts.map((id) => {
     // Obtener producto por id
@@ -25,8 +26,10 @@ const ContainerShopCart = ({ userId, userName, userEmail }) => {
     const totalPrice = product.price * quantity;
 
     return {
+      idProduct: product.id,
       title: product.name,
       price: product.price,
+      place: product.place,
       quantity,
       totalPrice,
     };
@@ -107,7 +110,7 @@ const ContainerShopCart = ({ userId, userName, userEmail }) => {
                     <h3>{product.name}</h3>
                     <p className="ml-4">S/. {product.price}</p>
                   </div>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-gray-500">{product.place}</p>
                 </div>
                 <div className="flex flex-1 items-end justify-between text-sm">
                   <div className="text-gray-500 flex gap-2">
@@ -125,6 +128,7 @@ const ContainerShopCart = ({ userId, userName, userEmail }) => {
                     <button
                       type="button"
                       className="font-medium text-indigo-600 hover:text-indigo-500"
+                      onClick={() => removeProduct(product.id)}
                     >
                       Quitar
                     </button>

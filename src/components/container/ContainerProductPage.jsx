@@ -1,6 +1,5 @@
-const { default: Product } = require("../common/Product/Product");
-
-const ContainerProductPage = ({ fetchData }) => {
+import Product from "../common/Product/Product";
+const ContainerProductPage = ({ fetchData, place }) => {
   return (
     <section className="flex flex-col gap-7 max-w-7xl ">
       <h2>Productos</h2>
@@ -10,7 +9,7 @@ const ContainerProductPage = ({ fetchData }) => {
             key={index}
             nombre={item.title}
             imagen={item.urlImage}
-            lugar="El Cholo"
+            lugar={place}
             dinero={item.price}
             id={item._id}
           />
